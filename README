@@ -1,0 +1,17 @@
+Пакетный менеджер SUPM (Версия 1.0)
+Для установки скачайте supm и dis для вашей операционной системы, затем:
+
+Установка в Debian, Ubuntu, Arch, Manjaro, Linux Mint
+$ sudo cp supm /usr/bin/supm
+$ sudo cp dis /usr/bin/dis
+$ chmod 777 /usr/bin/supm
+$ chmod 777 /usr/bin/dis
+
+Использование
+
+Установка пакета из файла
+$ sudo supm install (filename)
+Удаление пакета
+$ sudo supm remove (package-name)
+Установка из репозитория
+$ sudo dis install (package-name)
