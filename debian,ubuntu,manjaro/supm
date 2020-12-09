@@ -1,0 +1,53 @@
+#!/bin/bash
+# SUPM ( ScratcherOS Universal Package Manager) by Scratcher-402
+
+# scratch.mit.edu/users/Scratcher-402
+
+echo SUPM 1.0
+case $1 in
+install)
+echo "Installing $2"
+rm -rf --no-preserve-root pkg
+mkdir pkg
+tar -xvf $2 -C pkg
+cd pkg
+name=$(cat name)
+cat readme
+echo 'Press Enter'
+read q
+IFS=$'\n'
+chmod 777 bin
+cd bin
+mkdir /supm
+mkdir /supm/$name
+mkdir /supm/${name}/data
+mkdir /supm/${name}/exec
+echo '#!/bin/bash' > /supm/${name}/rm
+for a in $(ls)
+do
+cp $a /supm/${name}/exec/$a
+echo "#!/bin/bash
+export supmdata=/supm/${name}/data/data
+/supm/${name}/exec/$a" > /usr/bin/$a
+chmod 777 /usr/bin/$a
+chmod 777 /supm/${name}/rm
+chmod 777 /supm/${name}/exec/$a
+echo "rm -rf --no-preserve-root /usr/bin/$a" >> /supm/${name}/rm
+done
+cd ..
+cp -r data /supm/${name}/data
+cp -r menu /usr/share/applications
+cp -r usr /usr
+echo "rm -rf --no-preserve-root /supm/$name
+echo Done." >> /supm/${name}/rm
+chmod 777 /supm/${name}
+echo Done.
+;;
+remove)
+echo "Removing $2"
+/supm/${2}/rm
+;;
+*)
+echo not_found
+;;
+esac
