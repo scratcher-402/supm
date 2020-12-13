@@ -1,0 +1,58 @@
+#!/bin/bash
+# SUPM ( ScratcherOS Universal Package Manager) by Scratcher-402
+
+# scratch.mit.edu/users/Scratcher-402
+
+echo SUPM 1.0
+echo "Enter the path to the TCE directory (for example /mnt/sda1/tce/)"
+read disk
+case $1 in
+install)
+echo "Installing $2"
+rm -rf pkg
+mkdir pkg
+tar -xvf $2 -C pkg
+cd pkg
+name=$(cat name)
+cat readme
+echo 'Press Enter'
+read q
+IFS=$'\n'
+chmod 777 bin
+cd bin
+mkdir /${disk}/supm
+mkdir /${disk}/supm/$name
+mkdir /${disk}/supm/${name}/data
+mkdir /${disk}/supm/${name}/exec
+echo '#!/bin/bash' > /${disk}/supm/${name}/rm
+for a in $(ls)
+do
+cp $a /${disk}/supm/${name}/exec/$a
+echo "#!/bin/bash
+export supmdata=/${disk}/supm/${name}/data/data
+/supm/${name}/exec/$a" > /usr/bin/$a
+chmod 777 /usr/bin/$a
+chmod 777 /${disk}/supm/${name}/rm
+chmod 777 /${disk}/supm/${name}/exec/$a
+echo "rm -rf /usr/bin/$a" >> /${disk}/supm/${name}/rm
+echo /usr/bin/$a >> /opt/.filetool.lst
+done
+cd ..
+cp -r data /${disk}/supm/${name}/data
+cp -r menu /usr/local/share/applications
+echo /usr/local/share/applications >> /opt/.filetool.lst
+cp -r usr /usr
+echo "rm -rf /${disk}/supm/$name
+echo Done." >> /${disk}/supm/${name}/rm
+chmod 777 /${disk}/supm/${name}
+rm -rf pkg
+echo Done.
+;;
+remove)
+echo "Removing $2"
+/${disk}/supm/${2}/rm
+;;
+*)
+echo not_found
+;;
+esac
