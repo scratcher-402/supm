@@ -1,0 +1,20 @@
+#!/bin/sh
+echo Downloading...
+wget https://github.com/scratcher-402/supm/raw/main/supm2/files/duam/supm https://github.com/scratcher-402/supm/raw/main/supm2/files/duam/dis
+apt-get update
+apt-get install bash
+apt-get install make
+apt-get install build-essential
+apt-get install shc
+Installing...
+mkdir /usr/share
+mkdir /usr/share/supm
+mkdir /usr/share/supm/pkgs
+cp supm /usr/bin/supm
+rm supm
+chmod 777 /usr/bin/supm
+cp dis /usr/bin/dis
+rm dis
+chmod 777 /usr/bin/dis
+echo https://github.com/scratcher-402/supm-offical-repo/raw/main/ > /usr/share/supm/repo.dis
+echo Done!
