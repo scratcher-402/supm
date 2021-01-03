@@ -1,0 +1,46 @@
+--English
+
+
+To install, run the script install.sh for your operating system.
+If you already have SUPM 1 installed, run update.sh (coming soon)
+
+
+Using:
+
+Installing the package
+$ sudo supm install (file)
+or
+$ sudo dis install (pkg-name)
+
+Deleting a package
+$ sudo supm remove (pkg-name)
+
+Installing the Repository
+$ sudo dis set-repo (link)
+
+Viewing the list of packages
+$ sudo dis list
+
+
+----Русский
+
+
+Для устновки запустите скрипт install.sh для вашей операционной системы.
+Если у вас уже установлен SUPM 1, запустите update.sh (скоро)
+
+
+Использование:
+
+Установка пакета
+$ sudo supm install (file)
+или
+$ sudo dis install (pkg-name)
+
+Удаление пакета
+$ sudo supm remove (pkg-name)
+
+Установка репозитория
+$ sudo dis set-repo (link)
+
+Просмотр списка пакетов
+$ sudo dis list
