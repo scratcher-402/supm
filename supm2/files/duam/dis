@@ -3,7 +3,7 @@ echo "Download and Install script for SUPM 1.0"
 case $1 in
 install)
 echo Downloading...
-wget ${(cat /usr/share/supm/repo.dis)}/${2}.sh
+wget $(cat /usr/share/supm/repo.dis)/${2}.sh
 chmod 777 ${2}.sh
 ./${2}.sh
 rm ${2}.sh
