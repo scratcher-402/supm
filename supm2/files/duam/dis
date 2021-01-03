@@ -1,0 +1,24 @@
+#!/bin/bash
+echo "Download and Install script for SUPM 1.0"
+case $1 in
+install)
+echo Downloading...
+wget ${(cat /usr/share/supm/repo.dis)}/${2}.sh
+chmod 777 ${2}.sh
+./${2}.sh
+rm ${2}.sh
+supm install ${2}.tar
+;;
+
+set-repo)
+echo $2 > /usr/share/supm/repo.dis
+;;
+
+list)
+wget $(cat /usr/share/supm/repo.dis)/list.dis
+echo '
+'
+cat list.dis
+rm list.dis
+;;
+esac

@@ -1,0 +1,56 @@
+#!/bin/bash
+# SUPM 2 ( ScratcherOS Universal Package Manager) by Scratcher-402
+
+# scratch.mit.edu/users/Scratcher-402
+
+echo SUPM 2.0
+case $1 in
+install)
+echo "Installing $2"
+rm -rf --no-preserve-root pkg
+mkdir pkg
+tar -xvf $2 -C pkg
+cd pkg
+name=$(cat name)
+cat readme
+echo 'Press Enter'
+./preinst
+read q
+IFS=$'\n'
+chmod 777 bin
+cd bin
+mkdir /usr/share/supm/pkgs/$name
+mkdir /usr/share/supm/pkgs/${name}/data
+mkdir /usr/share/supm/pkgs/${name}/exec
+echo '#!/bin/bash' > /usr/share/supm/pkgs/${name}/rm
+for a in $(ls)
+do
+cp $a /usr/share/supm/pkgs/${name}/exec/$a
+echo "#!/bin/bash
+export supmdata=/usr/share/supm/pkgs/${name}/data/data
+/usr/share/supm/pkgs/${name}/exec/$a" > /usr/bin/$a
+chmod 777 /usr/bin/$a
+chmod 777 /usr/share/supm/pkgs/${name}/rm
+chmod 777 /usr/share/supm/pkgs/${name}/exec/$a
+echo "rm -rf --no-preserve-root /usr/bin/$a" >> /usr/share/supm/pkgs/${name}/rm
+done
+cd ..
+cp -r data /usr/share/supm/pkgs/${name}/data
+cp -r menu /usr/share/applications
+cp -r usr /
+echo "rm -rf --no-preserve-root /usr/share/supm/pkgs/$name
+echo Done." >> /usr/share/supm/pkgs/${name}/rm
+chmod 777 /usr/share/supm/pkgs/${name}
+./postinst
+cd ..
+rm -rf --no-preserve-root pkg
+echo Done.
+;;
+remove)
+echo "Removing $2"
+/usr/share/supm/pkgs/${2}/rm
+;;
+*)
+echo not_found
+;;
+esac
