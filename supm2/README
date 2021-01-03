@@ -1,7 +1,7 @@
 --English
 
 
-To install, run the script install.sh for your operating system.
+To install, run the script install.sh (or install.pext) for your operating system.
 If you already have SUPM 1 installed, run update.sh (coming soon)
 
 
@@ -25,7 +25,7 @@ $ sudo dis list
 ----Русский
 
 
-Для устновки запустите скрипт install.sh для вашей операционной системы.
+Для устновки запустите скрипт install.sh (или install.pext) для вашей операционной системы.
 Если у вас уже установлен SUPM 1, запустите update.sh (скоро)
 
 
