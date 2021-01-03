@@ -1,4 +1,23 @@
-(use Google Translate) Пакетный менеджер SUPM (Версия 1.0)
+OLD VERSION, OPEN SUPM2 FOLDER!
+
+SUPM Package Manager (Version 1.0)
+To install, download supm and dis for your operating system, then:
+
+Installation in Debian, Ubuntu, Arch, Manjaro, Linux Mint
+$ sudo cp supm /usr/bin/supm
+$ sudo cp dis /usr/bin/dis
+$ chmod 777 /usr/bin/supm
+$ chmod 777 /usr/bin/dis
+
+Using
+
+Installing a package from a file
+$ sudo supm install (filename)
+Removing the package
+$ sudo supm remove (package-name)
+Installing from the repository
+$ sudo dis install (package-name)
+Пакетный менеджер SUPM (Версия 1.0)
 Для установки скачайте supm и dis для вашей операционной системы, затем:
 
 Установка в Debian, Ubuntu, Arch, Manjaro, Linux Mint
