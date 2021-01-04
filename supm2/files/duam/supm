@@ -1,9 +1,9 @@
 #!/bin/bash
-# SUPM 2 ( ScratcherOS Universal Package Manager) by Scratcher-402
+# SUPM 2.1 ( ScratcherOS Universal Package Manager) by Scratcher-402
 
 # scratch.mit.edu/users/Scratcher-402
 
-echo SUPM 2.0
+echo SUPM 2.1
 case $1 in
 install)
 echo "Installing $2"
@@ -14,7 +14,7 @@ cd pkg
 name=$(cat name)
 cat readme
 echo 'Press Enter'
-./preinst
+bash preinst
 read q
 IFS=$'\n'
 chmod 777 bin
@@ -41,9 +41,10 @@ cp -r usr /
 echo "rm -rf --no-preserve-root /usr/share/supm/pkgs/$name
 echo Done." >> /usr/share/supm/pkgs/${name}/rm
 chmod 777 /usr/share/supm/pkgs/${name}
-./postinst
+bash postinst
 cd ..
 rm -rf --no-preserve-root pkg
+rm $2
 echo Done.
 ;;
 remove)
