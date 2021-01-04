@@ -5,7 +5,7 @@ install)
 echo Downloading...
 wget $(cat /usr/share/supm/repo.dis)/${2}.sh
 chmod 777 ${2}.sh
-./${2}.sh
+bash ${2}.sh
 rm ${2}.sh
 supm install ${2}.tar
 ;;
