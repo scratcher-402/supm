@@ -2,10 +2,10 @@
 echo Downloading...
 wget https://github.com/scratcher-402/supm/raw/main/supm2/files/duam/supm https://github.com/scratcher-402/supm/raw/main/supm2/files/duam/dis
 apt-get update
-apt-get install bash
-apt-get install make
-apt-get install build-essential
-apt-get install shc
+apt-get -y install bash
+apt-get -y install make
+apt-get -y install build-essential
+apt-get -y install shc
 Installing...
 mkdir /usr/share
 mkdir /usr/share/supm
