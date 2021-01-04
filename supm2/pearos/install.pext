@@ -6,6 +6,7 @@ apt-get -y install bash
 apt-get -y install make
 apt-get -y install build-essential
 apt-get -y install shc
+apt-get -y install zenity
 Installing...
 mkdir /usr/share
 mkdir /usr/share/supm
