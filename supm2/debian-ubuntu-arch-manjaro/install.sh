@@ -8,16 +8,18 @@ read a
 case $a in
 1)
 apt-get update
-apt-get install bash
-apt-get install make
-apt-get install build-essential
-apt-get install shc
+apt-get -y install bash
+apt-get -y install make
+apt-get -y install build-essential
+apt-get -y install shc
+apt-get -y install zenity
 ;;
 
 2)
 pacman -S bash
 pacman -S make
 pacman -S shc
+pacman -S zenity
 ;;
 
 esac
